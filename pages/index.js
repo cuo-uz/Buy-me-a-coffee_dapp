@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { ethers } from "ethers";
 import Image from "next/image";
-import Link from "next/link";
 import { Input, Button, Tooltip, Textarea, Loading } from "@nextui-org/react";
 import HeartIcon from "../assets/Heart.svg";
 import abi from "../utils/BuyMeACoffee.json";
@@ -160,16 +159,18 @@ export default function Home() {
     try {
       const { ethereum } = window;
 
-      const provider = new ethers.providers.Web3Provider(ethereum);
-      const signer = provider.getSigner();
-      const buyMeACoffee = new ethers.Contract(
-        contractAddress,
-        contractABI,
-        signer
-      );
+      if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        const buyMeACoffee = new ethers.Contract(
+          contractAddress,
+          contractABI,
+          signer
+        );
 
-      const memos = await buyMeACoffee.getMemos();
-      setMemos(memos);
+        const memos = await buyMeACoffee.getMemos();
+        setMemos(memos);
+      }
     } catch (error) {
       console.log(error);
     }
