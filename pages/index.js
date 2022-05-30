@@ -194,7 +194,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex flex-col w-full text-white font-mono bg-gradient-to-b from-black to-purple-900	">
+    <main className="flex flex-col w-full h-full text-white font-mono bg-gradient-to-b from-black to-purple-900	">
       <div className="flex h-20 mx-10 py-10 mb-3 border-b border-gray-400 justify-between items-center">
         <h1 className="text-3xl ">Buy me a coffee!</h1>
         <Tooltip
