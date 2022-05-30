@@ -35,6 +35,16 @@ export default function Home() {
   const messageRef = useRef();
 
   useEffect(() => {
+    const { ethereum } = window;
+
+    if (ethereum) {
+      setMetamaskIsNotAvailable(false);
+    } else {
+      setMetamaskIsNotAvailable(true);
+    }
+  }, []);
+
+  useEffect(() => {
     let buyMeACoffee;
     isWalletConnected();
     getMemos();
@@ -114,12 +124,12 @@ export default function Home() {
       const accounts = await ethereum.request({ method: "eth_accounts" });
 
       //Check if metamask is installed in the browser
-      if (!ethereum) {
-        setMetamaskIsNotAvailable(true);
-      } else if (accounts.length > 0) {
-        setIsLogged(true);
-      } else {
-        setIsLogged(false);
+      if (!setMetamaskIsNotAvailable) {
+        if (accounts.length > 0) {
+          setIsLogged(true);
+        } else {
+          setIsLogged(false);
+        }
       }
     } catch (error) {
       console.log("error: ", error);
@@ -184,7 +194,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex flex-col w-full h-100 text-white font-mono bg-gradient-to-b from-black to-purple-900	">
+    <main className="flex flex-col w-full text-white font-mono bg-gradient-to-b from-black to-purple-900	">
       <div className="flex h-20 mx-10 py-10 mb-3 border-b border-gray-400 justify-between items-center">
         <h1 className="text-3xl ">Buy me a coffee!</h1>
         <Tooltip
