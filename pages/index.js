@@ -159,18 +159,16 @@ export default function Home() {
     try {
       const { ethereum } = window;
 
-      if (ethereum) {
-        const provider = new ethers.providers.Web3Provider(ethereum);
-        const signer = provider.getSigner();
-        const buyMeACoffee = new ethers.Contract(
-          contractAddress,
-          contractABI,
-          signer
-        );
+      const provider = new ethers.providers.Web3Provider(ethereum);
+      const signer = provider.getSigner();
+      const buyMeACoffee = new ethers.Contract(
+        contractAddress,
+        contractABI,
+        signer
+      );
 
-        const memos = await buyMeACoffee.getMemos();
-        setMemos(memos);
-      }
+      const memos = await buyMeACoffee.getMemos();
+      setMemos(memos);
     } catch (error) {
       console.log(error);
     }

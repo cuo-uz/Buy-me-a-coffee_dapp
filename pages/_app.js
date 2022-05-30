@@ -1,7 +1,16 @@
-import react from "react";
+import Head from "next/head";
 import "../styles/globals.css";
+
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <Head>
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <title>Buy me a coffee!</title>
+      </Head>
+      <Component {...pageProps} />
+    </>
+  );
 }
 
 export default MyApp;
