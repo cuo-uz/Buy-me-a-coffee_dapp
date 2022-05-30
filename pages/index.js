@@ -105,7 +105,6 @@ export default function Home() {
 
         setCurrentAccount(accounts[0]);
         setIsLogged(true);
-
         refreshPage();
       }
     } catch (error) {
@@ -124,7 +123,7 @@ export default function Home() {
       const accounts = await ethereum.request({ method: "eth_accounts" });
 
       //Check if metamask is installed in the browser
-      if (!setMetamaskIsNotAvailable) {
+      if (!metamaskIsNotAvailable) {
         if (accounts.length > 0) {
           setIsLogged(true);
         } else {
@@ -219,7 +218,7 @@ export default function Home() {
         testnet
       </p>
       <div className="flex h-[28.125rem] mx-16 gap-28 justify-between p-5 items-center">
-        <div className="flex flex-col gap-6 justify-start items-center h-full w-1/2">
+        <div className="flex flex-col h-full gap-6 justify-start items-center w-1/2">
           <Input
             underlined
             aria-labelledby="Name"
@@ -271,7 +270,7 @@ export default function Home() {
         </div>
         <div className="flex flex-col gap-4 h-full px-4 pb-4 w-1/2">
           <h2 className="text-xl border-b border-gray-400">Coffess received</h2>
-          <div className="flex flex-col overflow-y-scroll h-full scrollbar scrollbar-thumb-gray-400 scrollbar-track-transparent scrollbar-medium">
+          <div className="flex flex-col h-full overflow-y-scroll  scrollbar scrollbar-thumb-gray-400 scrollbar-track-transparent scrollbar-medium">
             {memos &&
               memos.map((memo, index) => {
                 return (
