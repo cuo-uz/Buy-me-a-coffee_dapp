@@ -91,6 +91,8 @@ export default function Home() {
 
         setCurrentAccount(accounts[0]);
         setIsLogged(true);
+
+        window.location.reload();
       }
     } catch (error) {
       console.log(error);
