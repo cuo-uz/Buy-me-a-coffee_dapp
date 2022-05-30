@@ -193,7 +193,7 @@ export default function Home() {
   };
 
   return (
-    <main className="flex flex-col w-full h-full text-white font-mono bg-gradient-to-b from-black to-purple-900	">
+    <main className="flex flex-col w-full min-h-screen h-full text-white font-mono bg-gradient-to-b from-black to-purple-900	">
       <div className="flex h-20 mx-10 py-10 mb-3 border-b border-gray-400 justify-between items-center">
         <h1 className="text-3xl ">Buy me a coffee!</h1>
         <Tooltip
@@ -217,7 +217,7 @@ export default function Home() {
         This web is under development, make sure to connect the Goerli Ethereum
         testnet
       </p>
-      <div className="flex h-[28.125rem] mx-16 gap-28 justify-between p-5 items-center">
+      <div className="flex h-[28.125rem] 2xl:h-[750px] mx-16 gap-28 justify-between p-5 items-center">
         <div className="flex flex-col h-full gap-6 justify-start items-center w-1/2">
           <Input
             underlined
