@@ -92,11 +92,15 @@ export default function Home() {
         setCurrentAccount(accounts[0]);
         setIsLogged(true);
 
-        window.location.reload();
+        refreshPage();
       }
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const refreshPage = () => {
+    window.location.reload();
   };
 
   const isWalletConnected = async () => {
