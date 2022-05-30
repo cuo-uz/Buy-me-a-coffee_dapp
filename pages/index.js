@@ -54,17 +54,11 @@ export default function Home() {
     const { ethereum } = window;
 
     // Listen for new memo events.
-    if (ethereum) {
-      const provider = new ethers.providers.Web3Provider(ethereum, "any");
-      // const signer = provider.getSigner();
-      buyMeACoffee = new ethers.Contract(
-        contractAddress,
-        contractABI,
-        provider
-      );
+    const provider = new ethers.providers.Web3Provider(ethereum, "any");
+    // const signer = provider.getSigner();
+    buyMeACoffee = new ethers.Contract(contractAddress, contractABI, provider);
 
-      buyMeACoffee.on("NewMemo", onNewMemo);
-    }
+    buyMeACoffee.on("NewMemo", onNewMemo);
 
     return () => {
       if (buyMeACoffee) {
