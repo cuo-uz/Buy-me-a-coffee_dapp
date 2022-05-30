@@ -166,11 +166,10 @@ export default function Home() {
       const { ethereum } = window;
 
       const provider = new ethers.providers.Web3Provider(ethereum);
-      const signer = provider.getSigner();
       const buyMeACoffee = new ethers.Contract(
         contractAddress,
         contractABI,
-        signer
+        provider
       );
 
       const memos = await buyMeACoffee.getMemos();
